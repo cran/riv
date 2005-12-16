@@ -4,7 +4,7 @@
 \title{Robust instrumental variables estimator package.
 }
 \description{
-The package contains tools to find a robust instrumental variables estimator based on a high breakdown point S-estimator of location and
+This package contains tools to find a robust instrumental variables estimator based on a high breakdown point S-estimator of location and
 covariance.
 }
 \details{
@@ -23,7 +23,10 @@ riv(Y, Xex = FALSE, Xend, W, intercept = T, nsamp = 500, bdp = 0.5, approx = 100
 
 finds a robust instrumental variables estimator using a high breakdown point S-estimator of location and covariance.
 }
-\author{Kaufmann B. \email{beat.kaufmann@epfl.ch}}
+\author{
+Kaufmann B. \email{beat.kaufmann@epfl.ch}
+
+Cohen-Freue G.V. \email{gcohen@stat.ubc.ca}
 }
 \references{
 LOPUHAÄ,H.P. (1989). \emph{On the Relation between S-estimators and M-estimators of Multivariate Location and Covariance. Ann. Statist.} \bold{17} 1662-1683. 

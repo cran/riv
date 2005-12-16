@@ -11,7 +11,7 @@ slc(x, nsamp = 500, bdp = 0.5)
 \arguments{
   \item{x}{a matrix or data frame of data values, say of dimension n x p. The rows represent observations and the columns represent variables.}
   \item{nsamp}{the number of random p-subsets considered to compute the S-estimator (default = 500).}
-  \item{bdp}{breakdown point value of the S-estimator must be 0.15,0.25 od 0.5 (default).}
+  \item{bdp}{breakdown point value of the S-estimator, must be 0.15,0.25 or 0.5 (default).}
 }
 \value{
   A list with components

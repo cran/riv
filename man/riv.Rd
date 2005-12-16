@@ -10,21 +10,21 @@ riv(Y, Xex = FALSE, Xend, W, intercept = TRUE, nsamp = 500, bdp = 0.5, approx = 
 }
 \arguments{
   \item{Y}{a vector of responses, say of length n.}
-  \item{Xex}{a matrix of the exogenous variables, i.e. the variables which are pretented to be uncorrelated with the error. Default = FALSE, i.e. no exogenous
+  \item{Xex}{a matrix of the exogenous variables, i.e. the variables which are uncorrelated with the error. Default = FALSE, i.e. no exogenous
   variable is present in the model.}
-  \item{Xend}{a matrix of the endogenous variables, i.e. the variables which are pretended to be correlated with the error.}
+  \item{Xend}{a matrix of the endogenous variables, i.e. the variables which are correlated with the error.}
   \item{W}{a matrix of instruments. NOTE: we must have an instrument for each endogenous variable.} 
   \item{intercept}{if TRUE (default) a model with intercept is considered.}
   \item{nsamp}{number of subsamples to compute the S-estimator of multivariate location and covariance.}
-  \item{bdp}{Breakdown point value of the S-estimator must be 0.15, 0.25 or 0.5 (default).}
-  \item{approx}{number of observations generated from the normally distribution with mean zero and the identity matrix as variance
+  \item{bdp}{breakdown point value of the S-estimator, must be 0.15, 0.25 or 0.5 (default).}
+  \item{approx}{number of observations generated from the multivariate normal distribution with mean zero and the identity matrix as variance
       (default = 1000).}
 }
 \details{
 This estimator is constructed by using a robust S-estimator of multivariate location and covariance based on the Tukey's biweight function (see \code{slc}).
 
 Only the case in which the number of instruments is equal to the number of endogenous variables can be considered with this method, i.e. for each endogenous variable
-exact one instrument has to be provided. The matrix W and Xend has to be given appropriate that means the endogenous variable xend\eqn{_i} and the 
+exactly one instrument has to be provided. The matrices W and Xend have to be given appropriately. That means the endogenous variable xend\eqn{_i} and the 
 associated instrument w\eqn{_i} must be put in the same column respectively.
 
 The estimated variance and covariance matrix is based on the empirical influence function. See references for more details. 
@@ -48,7 +48,7 @@ COHEN-FREUE,G.V. and ZAMAR,R.H. (2005). \emph{A Robust Instrumental Variables Es
 \author{ 
 Kaufmann B. \email{beat.kaufmann@epfl.ch}
 
-Cohen-Freue G.V. \email{gcohen@stat.ubs.ca}
+Cohen-Freue G.V. \email{gcohen@stat.ubc.ca}
 }
 \seealso{\code{\link{slc}}}
 \examples{

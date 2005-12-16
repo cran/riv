@@ -3,7 +3,7 @@
 \docType{data}
 \title{Alaskan earthquakes data}
 \description{
-The dataset contains information about 62 Alaskan earthquakes occured from the period of 1989-1978.
+The dataset contains information about 62 Alaskan earthquakes that occured in the period 1989-1978.
 }
 \usage{data(earthquake)}
 \format{

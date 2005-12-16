@@ -1,8 +1,8 @@
 \name{sestck}
 \alias{sestck}
-\title{Tukey's biweight objectif function (scale)}
+\title{Tukey's biweight objective function (scale)}
 \description{
-Computes Tukey's biweight objectif function (scale) corresponding 
+Computes Tukey's biweight objective function (scale) corresponding 
 with the Mahalanobis distances x.  
 }
 \usage{
