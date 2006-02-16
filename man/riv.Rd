@@ -6,38 +6,38 @@ Finds robust instrumental variables estimator using high breakdown point S-estim
 location and covariance.
 }
 \usage{
-riv(Y, Xex = FALSE, Xend, W, intercept = TRUE, nsamp = 500, bdp = 0.5, approx = 1000)
+riv(Y,Xex=FALSE,Xend,W,intercept=TRUE,method=c("robust","classical"),nsamp=500,bdp=.5,approx=1000)
 }
 \arguments{
   \item{Y}{a vector of responses, say of length n.}
   \item{Xex}{a matrix of the exogenous variables, i.e. the variables which are uncorrelated with the error. Default = FALSE, i.e. no exogenous
   variable is present in the model.}
-  \item{Xend}{a matrix of the endogenous variables, i.e. the variables which are correlated with the error.}
-  \item{W}{a matrix of instruments. NOTE: we must have an instrument for each endogenous variable.} 
+  \item{Xend}{a matrix of the endogenous variables, i.e. the variables which are correlated with the error. Say of dimension n X (kend).}
+  \item{W}{a matrix of instruments, say of dimension n x k.} 
   \item{intercept}{if TRUE (default) a model with intercept is considered.}
+  \item{method}{the method to be used. The "\code{robust}" method (default) is based on the S-estimator of multivariate location and covariance, and "\code{classical}" method is based on the sample mean and covariance. See \code{Details} section}
   \item{nsamp}{number of subsamples to compute the S-estimator of multivariate location and covariance.}
   \item{bdp}{breakdown point value of the S-estimator, must be 0.15, 0.25 or 0.5 (default).}
   \item{approx}{number of observations generated from the multivariate normal distribution with mean zero and the identity matrix as variance
       (default = 1000).}
 }
 \details{
-This estimator is constructed by using a robust S-estimator of multivariate location and covariance based on the Tukey's biweight function (see \code{slc}).
-
-Only the case in which the number of instruments is equal to the number of endogenous variables can be considered with this method, i.e. for each endogenous variable
-exactly one instrument has to be provided. The matrices W and Xend have to be given appropriately. That means the endogenous variable xend\eqn{_i} and the 
-associated instrument w\eqn{_i} must be put in the same column respectively.
-
+For method "\code{robust}" the estimator is constructed by using a robust S-estimator of multivariate location and covariance based on the Tukey's biweight function (see \code{slc}).
 The estimated variance and covariance matrix is based on the empirical influence function. See references for more details. 
+
+For method "\code{classical}" the estimator is the classical instrumental variables estimator based on the sample mean and sample covariance. 
+
+
 }
 \value{
   A list with components
   \item{coefficients}{regression coefficients. if intercept = TRUE the first coefficient is the intercept.}
   \item{VC}{estimated variance-covariance matrix.}
-  \item{MD}{Mahalanobis distances from the estimator.}
-  \item{MSE}{vector of three components: sigma.hat1 = the mean squared error estimation, 
-   sigma.hat2 = the mean squared error estimation taking into account the weights associated to each observation,
-   sigma.hat3 = the squared median absolute deviation.}
-  \item{weight}{the weights assigned to each observation.}
+  \item{MD}{Mahalanobis distances from the estimator (only computed if method = "\code{robust}").}
+  \item{MSE}{vector of three components: sigma.hat1 = the mean square error estimation, 
+   sigma.hat2 = the mean square error estimation taking into account the weights associated to each observation (only computed if method = "\code{robust}" and k = kend),
+   sigma.hat3 = the squared median absolute deviation (only computed if method = "\code{robust}").}
+  \item{weight}{the weights assigned to each observation (only computed if method = "\code{robust}" and k = kend).}
 }
 \references{
 LOPUHAÄ,H.P. (1989). \emph{On the Relation between S-estimators and M-estimators of Multivariate Location and Covariance. Ann. Statist.} \bold{17} 1662-1683. 
@@ -49,6 +49,8 @@ COHEN-FREUE,G.V. and ZAMAR,R.H. (2005). \emph{A Robust Instrumental Variables Es
 Kaufmann B. \email{beat.kaufmann@epfl.ch}
 
 Cohen-Freue G.V. \email{gcohen@stat.ubc.ca}
+
+Zamar R.H. \email{ruben@stat.ubc.ca}
 }
 \seealso{\code{\link{slc}}}
 \examples{
@@ -65,7 +67,7 @@ text(earthquake[riv.eq$MD>sqrt(qchisq(0.95, 3)),2],earthquake[riv.eq$MD>sqrt(qch
 case[riv.eq$MD>sqrt(qchisq(0.95, 3))],pos=c(1,4,2,2,3,2))
 points(earthquake[riv.eq$MD>sqrt(qchisq(0.95, 3)),2],earthquake[riv.eq$MD>sqrt(qchisq(0.95, 3)),1],cex=1.5,pch=19)
 
-## Mahalanobis distances of the S-estiamtor of multivariate location and covariance (slc)
+## Mahalanobis distances of the S-estimator of multivariate location and covariance (slc)
 
 case <- 1:62
 plot(riv.eq$MD,xlab="Case number",ylab="Mahalanobis Distance",cex = 1.5)
@@ -88,8 +90,10 @@ Y <- as.matrix(mortality[,1])            ## M070
 Xex <- as.matrix(mortality[,c(2,3,5,6)]) ## MAGE,CI68,DENS,NONW 
 Xend <- as.matrix(mortality[,4])         ## MDOC  
 colnames(Xend) <- colnames(mortality)[4] 
-W <- as.matrix(mortality[,8])            ## IN69
-riv(Y,Xex,Xend,W)
+W <- as.matrix(mortality[,7:8])          ## EDUC,IN69
+
+## Classical instrumental variables estimator
+riv(Y,Xex,Xend,W,method="classical")     
 }
 
 \keyword{robust}

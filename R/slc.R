@@ -9,6 +9,9 @@ res<-y1+y2
 res 
 }
 
+if (!require(MASS))
+stop("cannot load required library MASS")
+
 if (is.null(dim(x))) x=as.matrix(x)                                                         
 if (any(is.na(x))) stop("missing values are not allowed")                                   
 if (bdp!=0.5 & bdp != 0.15 & bdp != 0.25) stop("bdp must be 0.15,0.25 or 0.5")              

@@ -12,14 +12,14 @@ covariance.
 Package: \tab riv\cr
 Type: \tab Package\cr
 Version: \tab 1.0\cr
-Date: \tab 2005-11-29\cr
+Date: \tab 2006-02-16\cr
 License: \tab GLP\cr
 }
 slc(x, nsamp = 500, bdp = 0.5):
 
 finds a high breakdown point S-estimator of multivariate location and covariance.
 
-riv(Y, Xex = FALSE, Xend, W, intercept = T, nsamp = 500, bdp = 0.5, approx = 1000):
+riv(Y,Xex=FALSE,Xend,W,intercept=TRUE,method=c("robust","classical"),nsamp=500,bdp=.5,approx=1000):
 
 finds a robust instrumental variables estimator using a high breakdown point S-estimator of location and covariance.
 }
@@ -27,6 +27,8 @@ finds a robust instrumental variables estimator using a high breakdown point S-e
 Kaufmann B. \email{beat.kaufmann@epfl.ch}
 
 Cohen-Freue G.V. \email{gcohen@stat.ubc.ca}
+
+Zamar R.H. \email{ruben@stat.ubc.ca}
 }
 \references{
 LOPUHAÄ,H.P. (1989). \emph{On the Relation between S-estimators and M-estimators of Multivariate Location and Covariance. Ann. Statist.} \bold{17} 1662-1683. 

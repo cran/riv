@@ -3,7 +3,7 @@
 \docType{data}
 \title{Alaskan earthquakes data}
 \description{
-The dataset contains information about 62 Alaskan earthquakes that occured in the period 1989-1978.
+The dataset contains information about 62 Alaskan earthquakes that occured between 1969-1978.
 }
 \usage{data(earthquake)}
 \format{
@@ -15,7 +15,7 @@ The dataset contains information about 62 Alaskan earthquakes that occured in th
   }
 }
 \source{
-FULLER,W.A. (1987). \emph{Measurement Error Models}. Wiley, NewYork. 
+FULLER,W.A. (1987). \emph{Measurement Error Models}. Wiley, New York. 
 }
 \references{
 COHEN-FREUE,G.V. and ZAMAR,R.H. (2005). \emph{A Robust Instrumental Variables Estimator}.

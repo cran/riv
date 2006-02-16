@@ -29,7 +29,9 @@ RUPPERT,D. (1992). \emph{Computing S Estimators for Regression and Multivariate 
 \author{
 Kaufmann B. \email{beat.kaufmann@epfl.ch} 
 
-Cohen-Freue G.V. \email{gcohen@stat.ubs.ca}
+Cohen-Freue G.V. \email{gcohen@stat.ubc.ca}
+
+Zamar R.H. \email{ruben@stat.ubc.ca}
 }
 
 \seealso{\code{\link{lqs}}}
