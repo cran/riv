@@ -40,7 +40,7 @@ For method "\code{classical}" the estimator is the classical instrumental variab
   \item{weight}{the weights assigned to each observation (only computed if method = "\code{robust}" and k = kend).}
 }
 \references{
-LOPUHAÄ,H.P. (1989). \emph{On the Relation between S-estimators and M-estimators of Multivariate Location and Covariance. Ann. Statist.} \bold{17} 1662-1683. 
+LOPUHAA H.P. (1989). \emph{On the Relation between S-estimators and M-estimators of Multivariate Location and Covariance. Ann. Statist.} \bold{17} 1662-1683. 
 
 COHEN-FREUE,G.V. and ZAMAR,R.H. (2005). \emph{A Robust Instrumental Variables Estimator.}
 }

@@ -178,7 +178,7 @@ function(Y,Xex=FALSE,Xend,W,intercept=TRUE,method=c("robust","classical"),nsamp=
 
       IF.b1.array <- IF.solveA + IF.B
    
-      IF.b1 <- t(matrix(IF.b1.array,ncol=p,byrow=T))
+      IF.b1 <- t(matrix(IF.b1.array,ncol=p,byrow=TRUE))
       IFriv= IF.b1
       if (intercept)
       {

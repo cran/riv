@@ -1,0 +1,16 @@
+a6d207b2f12765f5854f443a32ba7fe2 *DESCRIPTION
+d47debaa62834676b835c576b1114c29 *NAMESPACE
+1ae1667fac7c5af63320342df4f9fec4 *R/rho.biweight.R
+6c1d6f311a652bdce4507118c636641d *R/riv.R
+a6d6423b8c8e4c3101e21cffe59ff97d *R/sestck.R
+fdbf09c854f2556efe1cfa9c8ae88da2 *R/slc.R
+23161c7eb305fec411df18388de0d35c *README
+fa0af2a9a1e35c91c37474b5aeda2d53 *data/earthquake.rda
+216f103dc3abbd9fc8dd2623562c5050 *data/mortality.rda
+2cd021750e0bb7475b8cc5343c4b8507 *man/earthquake.Rd
+3f0f087bf7b6578bfc74cdeb796155fa *man/mortality.Rd
+b5b9acbc73e91157bedd6e744011f927 *man/rho.biweight.Rd
+8544ca0b82be15e0b6d2e52ae7c5e378 *man/riv.Rd
+87fe7f4822ed17f440f9874c7fb0eb17 *man/riv.package.Rd
+e9c76dcffcf992608c8f767e29441ecd *man/sestck.Rd
+327958e123cc19febc79de97e9d2c4ca *man/slc.Rd

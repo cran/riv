@@ -22,7 +22,7 @@ slc(x, nsamp = 500, bdp = 0.5)
   \item{c}{constant of the Tukey's biweight function.}
 }
 \references{
-LOPUHAÄ,H.P. (1989) \emph{On the Relation between S-estimators and M-estimators of Multivariate Location and Covariance. Ann. Statist.} \bold{17} 1662-1683.
+LOPUHAA,H.P. (1989) \emph{On the Relation between S-estimators and M-estimators of Multivariate Location and Covariance. Ann. Statist.} \bold{17} 1662-1683.
 
 RUPPERT,D. (1992). \emph{Computing S Estimators for Regression and Multivariate Location/Dispersion. J. Comput. Graph. Statist.} \bold{1} 253-270.
 }

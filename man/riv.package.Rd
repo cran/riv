@@ -31,7 +31,7 @@ Cohen-Freue G.V. \email{gcohen@stat.ubc.ca}
 Zamar R.H. \email{ruben@stat.ubc.ca}
 }
 \references{
-LOPUHAÄ,H.P. (1989). \emph{On the Relation between S-estimators and M-estimators of Multivariate Location and Covariance. Ann. Statist.} \bold{17} 1662-1683. 
+LOPUHAA,H.P. (1989). \emph{On the Relation between S-estimators and M-estimators of Multivariate Location and Covariance. Ann. Statist.} \bold{17} 1662-1683. 
 
 COHEN-FREUE,G.V. and ZAMAR,R.H. (2005). \emph{A Robust Instrumental Variables Estimator.}
 }
