@@ -6,11 +6,15 @@ riv_withDummies <- function(Y, Xend, Xex = NULL,
   n <- length(Y)
   Zinst <- as.matrix(Zinst)
   if (is.null(colnames(Zinst)))
-    colnames(Zinst) <- paste0('Zinst', seq(ncol(Zinst)))
+    colnames(Zinst) <- paste('Zinst',
+                             seq(ncol(Zinst)),
+                             sep='')
   
   Xend <- as.matrix(Xend)
   if (is.null(colnames(Xend)))
-    colnames(Xend) <- paste0('Xend', seq(ncol(Xend)))
+    colnames(Xend) <- paste('Xend',
+                            seq(ncol(Xend)),
+                            sep='')
   
   kend <- ncol(Xend)
   k <- ncol(Zinst)
@@ -21,7 +25,9 @@ riv_withDummies <- function(Y, Xend, Xex = NULL,
   # Dummies (assumed exogenous)
   dummies <- as.matrix(dummies)
   if (is.null(colnames(dummies)))
-    colnames(dummies) <- paste0('D', seq(ncol(dummies)))
+    colnames(dummies) <- paste('D',
+                               seq(ncol(dummies)),
+                               sep='')
   
   # Create a full data matrix Z = cbind(Xend, Zinst, Xex, D, Y)
   
@@ -30,7 +36,9 @@ riv_withDummies <- function(Y, Xend, Xex = NULL,
   } else {
     Xex <- as.matrix(Xex)
     if (is.null(colnames(Xex)))
-      colnames(Xex) <- paste0('Xex', seq(ncol(Xex)))
+      colnames(Xex) <- paste('Xex',
+                             seq(ncol(Xex)),
+                             sep='')
     X <- cbind(Xend, Xex)
   }
   

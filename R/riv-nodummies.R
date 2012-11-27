@@ -3,11 +3,15 @@ riv_noDummies <- function(Y, Xend, Xex = NULL, Zinst, intercept = TRUE,
                                      'MCD-est', 'classical')) {
   Zinst <- as.matrix(Zinst)
   if (is.null(colnames(Zinst)))
-      colnames(Zinst) <- paste0('Zinst', seq(ncol(Zinst)))
+      colnames(Zinst) <- paste('Zinst',
+                               seq(ncol(Zinst)),
+                               sep='')
   
   Xend <- as.matrix(Xend)
   if (is.null(colnames(Xend)))
-      colnames(Xend) <- paste0('Xend', seq(ncol(Xend)))
+      colnames(Xend) <- paste('Xend',
+                              seq(ncol(Xend)),
+                              sep='')
   
   kend <- ncol(Xend)
   k <- ncol(Zinst)
@@ -17,7 +21,9 @@ riv_noDummies <- function(Y, Xend, Xex = NULL, Zinst, intercept = TRUE,
   if (!is.null(Xex)) {
     Xex <- as.matrix(Xex)
     if (is.null(colnames(Xex)))
-      colnames(Xex) <- paste0('Xex', seq(ncol(Xex)))
+      colnames(Xex) <- paste('Xex',
+                             seq(ncol(Xex)),
+                             sep='')
   }
   
   if (any(is.na(c(Y, Xend, Xex, Zinst))))

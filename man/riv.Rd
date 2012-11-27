@@ -4,7 +4,7 @@
 
 \description{
   Finds robust instrumental variables estimator using high breakdown
-  point S-estimator of multivariate location and covariance.
+  point multivariate location and scatter matrix S-estimators.
 }
 
 \usage{
@@ -15,11 +15,11 @@ riv(Y, Xend, Xex=NULL, Zinst, dummies=NULL,
 \arguments{
   \item{Y}{vector of responses.}
   \item{Xend}{matrix of the endogenous variables, i.e. covariates that
-    are correlated with the error.
+    are correlated with the regression's error term.
   }
   \item{Xex}{matrix of the exogenous variables, i.e. covariates that are
-    uncorrelated with the error. Default = \code{NULL}, i.e. no
-    exogenous variables are present in the model.
+    uncorrelated with the regression's error term. Default =
+    \code{NULL}, i.e. no exogenous variables are present in the model.
   }
   \item{Zinst}{matrix of instruments, variables correlated with the
     endogenous covariates, but uncorrelated with the error term. The
@@ -31,30 +31,32 @@ riv(Y, Xend, Xex=NULL, Zinst, dummies=NULL,
   \item{method}{the method to be used. The "\code{S-est}" method
     (default) is based on the S-estimator of multivariate location and
     covariance, and "\code{classical}" method is based on the sample
-    mean and covariance. See \code{Details} section.
+    mean and covariance and the resulting estimator is equivalent to the
+    two-stage least squares estimator (2SLS). See \code{Details}
+    section.
   }
 }
 
 \details{
-  For method "\code{S-est}", the estimator is constructed by using a
-  robust S-estimator of multivariate location and covariance based on
+  For method "\code{S-est}", RIV is constructed using the
+  robust multivariate location and scatter S-estimator based on
   the Tukey's biweight function (see \code{CovSest}).
   
   If RIV is computed using the S-estimator, its variance-covariance
   matrix is estimated based on the empirical influence function. See
   references for more details.
 
-  For method "\code{SD-est}", the estimator is constructed by using the
-  Stahel-Donoho robust multivariate location and scatter estimator (see
+  For method "\code{SD-est}", RIV is constructed using the
+   Stahel-Donoho's robust multivariate location and scatter estimator (see
   \code{CovSde}).
   
-  For method "\code{MCD-est}", the estimator is constructed by using a
-  'Fast MCD' (Minimum Covariance Determinant) robust multivariate
+  For method "\code{MCD-est}", RIV is constructed using the
+  Minimum Covariance Determinant (MCD) robust multivariate
   location and scatter estimator (see \code{CovMcd}).
   
   For method "\code{classical}", the estimator is the classical
   instrumental variables estimator based on the sample mean and sample
-  variance-covariance matrix.
+  variance-covariance matrix (also known as the two-stage least squares estimator, 2SLS).
 
   If the model contains dummy variables (i.e., \code{dummies != NULL}),
   RIV is computed using an iterative algorithm called "\eqn{L_1}-RIV".
@@ -73,9 +75,9 @@ riv(Y, Xend, Xex=NULL, Zinst, dummies=NULL,
     for the standard error, t-statistic, and p-value.}
   \item{VC}{estimated variance-covariance matrix, computed only if
     \code{method} = "\code{S-est}" or "\code{classical}"}
-  \item{MD}{Mahalanobis of each observation to the multivariate location
-    S-estimator with respect to the scatter S-estimator (only computed
-    if \code{method} = "\code{S-est}").}
+  \item{MD}{Squared Mahalanobis distances of each observation to the
+    multivariate location S-estimator with respect to the scatter
+    S-estimator (only computed if \code{method} = "\code{S-est}").}
   \item{MSE}{vector of three components, computed only if \code{method}
     = "\code{S-est}" or "\code{classical}":
     \itemize{
@@ -89,9 +91,9 @@ riv(Y, Xend, Xex=NULL, Zinst, dummies=NULL,
         computed if \code{method} = "\code{S-est}").
     }
   }
-  \item{weight}{the weights assigned to each observation (only computed
-    if \code{method} = "\code{S-est}" and the number of instruments is
-    equal to the number of endogenous variables.}
+  \item{weight}{the weights assigned by RIV to each observation (only
+    computed if \code{method} = "\code{S-est}" and the number of
+    instruments is equal to the number of endogenous variables.}
 }
 
 \references{
@@ -106,46 +108,39 @@ riv(Y, Xend, Xex=NULL, Zinst, dummies=NULL,
 
 \examples{
 
-## load data earthquake: the first column contains the response Y, the
-## second the endogenous variable X and the third column is the
-## instrument Zinst.
+## load data earthquake: the first column contains the response (Y), the
+## second the endogenous variable (X) and the third column is the
+## instrument (W).
 data(earthquake) 
-riv.eq <- riv(earthquake[,1],earthquake[,2],NULL,earthquake[,3])
+riv.eq <- riv(earthquake$Y,earthquake$X,NULL,earthquake$W)
 
 ## plot of the RIV estimates and the outlying observations are
 ## identified by filled points
-plot(earthquake[,2],earthquake[,1],xlab="X",ylab="Y",cex=1.5)
+plot(earthquake$X,earthquake$Y,xlab="X",ylab="Y",cex=1.5)
 abline(riv.eq$Summary.Table[,1])
-case <- 1:62
-text(earthquake[riv.eq$MD>sqrt(qchisq(0.95, 3)),2],
-     earthquake[riv.eq$MD>sqrt(qchisq(0.95, 3)),1],
-     case[riv.eq$MD>sqrt(qchisq(0.95, 3))],
-     pos=c(1,4,2,2,3,2))
-points(earthquake[riv.eq$MD>sqrt(qchisq(0.95, 3)),2],
-       earthquake[riv.eq$MD>sqrt(qchisq(0.95, 3)),1],
+outliers <- which(sqrt(riv.eq$MD)>sqrt(qchisq(0.99, 3)))
+text(earthquake[outliers,2],
+     earthquake[outliers,1],
+     outliers,
+     pos=c(4,4,4,2))
+     
+points(earthquake[outliers,2],
+       earthquake[outliers,1],
        cex=1.5,pch=19)
 
-## Mahalanobis distances of the S-estimator of multivariate location and
-## covariance (CovSest)
-case <- 1:62
-plot(riv.eq$MD,xlab="Case number",ylab="Mahalanobis Distance",cex = 1.5)
-abline(h=sqrt(qchisq(0.95, 3)))
-text(case[riv.eq$MD>sqrt(qchisq(0.95, 3))],
-     riv.eq$MD[riv.eq$MD>sqrt(qchisq(0.95, 3))],
-     case[riv.eq$MD>sqrt(qchisq(0.95, 3))],
-     pos=c(3,3,3,3,2,3))
-
-## Weights associated to each observation 
-plot(riv.eq$weight,xlab="Case number",ylab="Weight",cex=1.5)
-abline(h=0)
-text(case[riv.eq$MD>sqrt(qchisq(0.95, 3))],
-     riv.eq$weight[riv.eq$MD>sqrt(qchisq(0.95, 3))],
-     case[riv.eq$MD>sqrt(qchisq(0.95, 3))],
-     pos=c(3,3,3,2,3,3),
-     col=c("black","black","red","black","red","black"))
-points(case[riv.eq$weight==0],
-       riv.eq$weight[riv.eq$weight==0],
-       col="red",cex=1.5,pch=19)
+## Weights given by RIV to each observation as a function of the square
+## root of the Mahalanobis distances (d) of each observation to the
+## multivariate location and covariance S-estimator (computed with
+## CovSest in rrcov)
+plot(sqrt(riv.eq$MD),riv.eq$weight,xlab="d",ylab="RIV's Weights",cex = 1.5)
+abline(h=sqrt(qchisq(0.99, 3)))
+text(sqrt(riv.eq$MD)[outliers],
+     riv.eq$weight[outliers],
+     outliers,
+     pos=c(2, 1, 1, 4))
+points(sqrt(riv.eq$MD)[outliers],
+       riv.eq$weight[outliers],
+       cex=1.5, pch=19)
 
 
 ## load data mortality

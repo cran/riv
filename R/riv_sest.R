@@ -45,7 +45,7 @@ riv_sest <- function(Y, Xend, Xex, Zinst, intercept) {
     sigma.hat3 <- (mad(resid))^2
     tabRIV <- cbind(biv, sd.riv, tval, pv)
     colnames(tabRIV) <- c('Coef', 'Std.Err.', 't', 'p.values')
-    MD <- sqrt(mahalanobis(Z, L, V))
+    MD <- mahalanobis(Z, L, V)
 
     result <- list(Summary.Table = tabRIV,
                    VC = AV.IFriv,
@@ -53,7 +53,7 @@ riv_sest <- function(Y, Xend, Xex, Zinst, intercept) {
                    MD = MD)
 
     if (k == kend) {
-      weight <- psi.bisquare(MD, c)
+      weight <- psi.bisquare(sqrt(MD), c)
       weight <- weight/sum(weight)
       result[['weight']] <- weight
 
