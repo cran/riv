@@ -41,6 +41,6 @@ COHEN-FREUE,G.V. and ZAMAR,R.H. (2005). \emph{A Robust Instrumental Variables Es
 }
 \examples{
 data(earthquake)
-plot(earthquake$X,earthquake$Y,xlab="X",ylab="Y") 
+plot(earthquake$X, earthquake$Y, xlab="X", ylab="Y")
 }
 \keyword{datasets}
