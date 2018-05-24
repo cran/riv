@@ -8,13 +8,6 @@
   covariance.
 }
 \details{
-  \tabular{ll}{
-    Package: \tab riv\cr
-    Type: \tab Package\cr
-    Version: \tab 2.0\cr
-    Date: \tab 2012-11-19\cr
-    License: \tab GPL-2\cr
-  }
   riv(Y, Xend, Xex = NULL, Zinst, dummies = NULL,
       method = c('S-est', 'SD-est', 'MCD-est', 'classical'),
       nsamp = 500, bdp = 0.5)
@@ -26,12 +19,12 @@
   G.V. Cohen-Freue \email{gcohen@stat.ubc.ca}
 
   D. Cubranic \email{cubranic@stat.ubc.ca}
-  
+
   with contributions from B. Kaufmann \email{beat.kaufmann@epfl.ch} and
   R.H. Zamar \email{ruben@stat.ubc.ca}
 }
 \references{
-LOPUHAA,H.P. (1989). \emph{On the Relation between S-estimators and M-estimators of Multivariate Location and Covariance. Ann. Statist.} \bold{17} 1662-1683. 
+LOPUHAA,H.P. (1989). \emph{On the Relation between S-estimators and M-estimators of Multivariate Location and Covariance. Ann. Statist.} \bold{17} 1662-1683.
 
 COHEN-FREUE, G.V., ORTIZ-MOLINA, H., and ZAMAR, R.H. (2012) \emph{A
   Natural Robustification of the Ordinary Instrumental Variables

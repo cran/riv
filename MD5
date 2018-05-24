@@ -1,5 +1,5 @@
-e2d299ff025ee130848f481810ec4463 *DESCRIPTION
-65a756d324c9c1717fd075c21e56f97f *NAMESPACE
+fa7b3a8cf73a581e9310c8ccd35253ee *DESCRIPTION
+3756a6b1bf9a88c578bce853e5b689aa *NAMESPACE
 2e71a2942e3e340a652a46cc5a65ef4b *R/avif.R
 e306c6a5948f693de4a1b7e1feea4ea1 *R/betaiv.R
 88dcbe4955763447ad4840e39dd920aa *R/ifconst.R
@@ -20,4 +20,4 @@ fa0af2a9a1e35c91c37474b5aeda2d53 *data/earthquake.rda
 b85c18d9006eac5e4f66786cb296e645 *man/earthquake.Rd
 4ff02dcdde504f53cc7b581246abc377 *man/mortality.Rd
 ec0128f0b8e6ec348586d2757db5fd51 *man/riv.Rd
-de7e766dd57064d4f3c9626a586b7b5d *man/riv.package.Rd
+5d9d11c230eaf46846efd2effb764f3d *man/riv.package.Rd

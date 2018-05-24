@@ -1,7 +1,7 @@
 Package: riv
-Title: Robust instrumental variables estimator
-Version: 2.0-4
-Date: 2013-10-03
+Title: Robust Instrumental Variables Estimator
+Version: 2.0-5
+Date: 2018-05-023
 Author: Gabriela Cohen-Freue and Davor Cubranic,
         with contributions from B. Kaufmann and R.H. Zamar
 Maintainer: Gabriela Cohen-Freue <gcohen@stat.ubc.ca>
@@ -10,7 +10,8 @@ Description: Finds a robust instrumental variables estimator using a
              high breakdown point S-estimator of multivariate location
              and scatter matrix.
 License: GPL-2
-Packaged: 2013-10-03 21:02:31 UTC; davor
 NeedsCompilation: no
+RoxygenNote: 6.0.1
+Packaged: 2018-05-23 22:54:44 UTC; david
 Repository: CRAN
-Date/Publication: 2013-10-03 23:45:09
+Date/Publication: 2018-05-24 03:09:12 UTC
